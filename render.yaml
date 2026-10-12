@@ -1,0 +1,14 @@
+
+services:
+  - type: web
+    name: qq-music-mcp
+    runtime: python
+    plan: free
+    buildCommand: pip install .
+    startCommand: python -m qq_music_api.web_server
+    healthCheckPath: /health
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.8"
+      - key: MCP_AUTH_TOKEN
+        generateValue: true
